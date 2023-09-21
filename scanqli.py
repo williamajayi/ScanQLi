@@ -54,7 +54,7 @@ elif options.url and validators.url(options.url):
 elif options.urllist:
     text_file = open(options.urllist, "r")
     url = text_file.read().split('\n')
-    url = filter(partial(is_not, ""), url)
+    url = list(filter(partial(is_not, ""), url))
     for infile in url:
         if not validators.url(infile):
             function.PrintError("-u " + infile, "Malformed URL. Please given a valid URL")
